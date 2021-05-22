@@ -1,0 +1,35 @@
+{
+  "name": "finapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/uuid": "^8.3.0",
+    "body-parser": "^1.19.0",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "moment": "^2.29.1",
+    "pm2": "^4.5.6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.27.0",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "dev": "tsnd --respawn src/index.ts",
+    "start": "pm2 start dist/index.js",
+    "build": "tsc -p .",
+    "pm2:monit": "pm2 monit",
+    "pm2:list": "pm2 list",
+    "pm2:stop": "pm2 stop"
+  }
+}
