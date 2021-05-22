@@ -18,7 +18,7 @@ class StatementRepository implements IStatementRepository {
     this.accountRepository = accountRepository
   }
 
-  async List(account: IAccount | null, type: StatementType | null, date: string | null): Promise<IStatement[]> {
+  async List(account?: IAccount, type?: StatementType, date?: string): Promise<IStatement[]> {
     let statements = await this.database.List('statements') as IStatement[]
 
     if (account) {
@@ -109,7 +109,7 @@ class StatementRepository implements IStatementRepository {
   }
 
   async GetBalance(account: IAccount): Promise<number> {
-    const statements = await this.List(account, null, null)
+    const statements = await this.List(account)
     const balance = statements.reduce((value, s) => {
       return s.type === StatementType.deposit ? value + s.amount: value - s.amount
     }, 0)

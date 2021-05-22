@@ -9,7 +9,7 @@ interface IStatementRepository {
   database: IDatabase
   accountRepository: IAccountRepository
 
-  List(account: IAccount | null, type: StatementType | null, date: string | null): Promise<IStatement[]>
+  List(account?: IAccount, type?: StatementType, date?: string): Promise<IStatement[]>
   Deposit(account: IAccount, amount: number): Promise<boolean>
   Withdraw(account: IAccount, amount: number): Promise<boolean>
   Transfer(accountFrom: IAccount, accountTo: IAccount, amount: number): Promise<boolean>

@@ -17,9 +17,9 @@ const repository = new StatementRepository(logger, db, accountRepository)
 
 const List = async(req: Request, resp: Response): Promise<void> => {
   const accountId = req.query.account as string
-  const type = Number.parseInt(req.query.type as string) || null
-  const account = await accountRepository.Get(accountId) || null
-  const date = req.query.date as string || null
+  const type = Number.parseInt(req.query.type as string)
+  const account = await accountRepository.Get(accountId) as IAccount
+  const date = req.query.date as string
   resp.json(await repository.List(account, type, date))
 }
 
